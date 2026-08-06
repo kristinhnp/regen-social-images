@@ -1,0 +1,79 @@
+# Publishes any Instagram post whose time has arrived.
+#
+# Facebook needs nothing here: Meta holds scheduled Page posts on its own
+# servers and publishes them itself. Instagram has no scheduling at all,
+# so something must be awake at the moment each post is due. That used to
+# be a job on the Mac. Now it is this.
+#
+# Times below are UTC, because GitHub cron is always UTC and does not
+# follow daylight saving. The window is deliberately wide enough to cover
+# 08:00 New York in both summer and winter, and to absorb the delay
+# GitHub sometimes adds to scheduled runs.
+
+name: Publish due Instagram posts
+
+on:
+  schedule:
+    # Every 15 minutes from 11:00 to 14:45 UTC.
+    # That is 07:00-10:45 New York in summer, 06:00-09:45 in winter.
+    - cron: "0,15,30,45 11-14 * * *"
+    # One catch-up in the evening, in case the morning runs were skipped.
+    - cron: "30 22 * * *"
+  workflow_dispatch:        # the "Run workflow" button, for testing
+
+# Only one run at a time, ever. Two overlapping runs could both decide the
+# same post is due and publish it twice. This is the main guard against
+# that; see PUBLISHING.md for the others.
+concurrency:
+  group: instagram-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # needed to save published.json back
+
+    steps:
+      - name: Get the code and the current record
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Publish anything due
+        env:
+          PAGE_ACCESS_TOKEN: ${{ secrets.PAGE_ACCESS_TOKEN }}
+          PAGE_ID: ${{ secrets.PAGE_ID }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          META_APP_ID: ${{ secrets.META_APP_ID }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+        run: python publish.py --instagram-due --live
+
+      - name: Save the record back
+        # Runs even if a post failed, so a partial success is never lost.
+        # Losing this file is what would allow a double post next time.
+        if: always()
+        run: |
+          if [ -z "$(git status --porcelain published.json)" ]; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git config user.name  "Regen Holistics Publisher"
+          git config user.email "publisher@regenholistics.local"
+          git add published.json
+          git commit -m "Record published posts [skip ci]"
+          for attempt in 1 2 3; do
+            if git push; then
+              echo "Saved."
+              exit 0
+            fi
+            echo "Push failed, retrying ($attempt of 3)."
+            git pull --rebase --autostash || true
+            sleep 5
+          done
+          echo "::error::Could not save published.json. Fix this before the"
+          echo "::error::next run, or a post could go out twice."
+          exit 1
