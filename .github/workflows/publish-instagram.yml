@@ -45,7 +45,9 @@ jobs:
 
       - name: Publish anything due
         env:
-          PAGE_ACCESS_TOKEN: ${{ secrets.PAGE_ACCESS_TOKEN }}
+          # The Page token is what actually publishes; the User token
+          # only exists to derive it, so it is not needed here.
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
           PAGE_ID: ${{ secrets.PAGE_ID }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           META_APP_ID: ${{ secrets.META_APP_ID }}
