@@ -167,24 +167,48 @@ def do_facebook(posts, data, live):
             print("        %s" % caption.splitlines()[0][:72])
             continue
 
-        params = {
-            "caption": caption,
-            "published": "false",
-            "scheduled_publish_time": str(int(when.timestamp())),
-        }
         try:
+            # Two steps, and the order matters.
+            #
+            # Posting straight to /photos makes a photo in an album. It is
+            # published, but it is a photo story: it lands in the Photos tab
+            # and its link is photo.php, not /posts/. What we want is an
+            # ordinary post with a picture on it, which is what Business
+            # Suite produces.
+            #
+            # So: upload the photo with published=false to get its id, then
+            # create a feed post that attaches it. That second object is the
+            # real post, and it is the one that gets scheduled.
+            upload = {"published": "false"}
             if hosted:
-                params["url"] = hosted
-                result = graph.post("%s/photos" % page_id, params, label="FB %s" % pid)
+                upload["url"] = hosted
+                photo = graph.post("%s/photos" % page_id, upload,
+                                   label="FB %s upload" % pid)
             else:
                 if not os.path.exists(local):
                     raise RuntimeError(
                         "no image at %s. Run generate.py first." % os.path.basename(local)
                     )
-                result = graph.post("%s/photos" % page_id, params,
-                                    image_path=local, label="FB %s" % pid)
-            post_id = result.get("post_id") or result.get("id")
-            state.mark(data, pid, "fb", "scheduled", post_id=post_id, error=None)
+                photo = graph.post("%s/photos" % page_id, upload,
+                                   image_path=local, label="FB %s upload" % pid)
+
+            media_id = photo.get("id")
+            if not media_id:
+                raise RuntimeError("Facebook did not return a photo id.")
+
+            result = graph.post(
+                "%s/feed" % page_id,
+                {
+                    "message": caption,
+                    "attached_media[0]": json.dumps({"media_fbid": media_id}),
+                    "published": "false",
+                    "scheduled_publish_time": str(int(when.timestamp())),
+                },
+                label="FB %s post" % pid,
+            )
+            post_id = result.get("id")
+            state.mark(data, pid, "fb", "scheduled", post_id=post_id,
+                       photo_id=media_id, error=None)
             print("  + %s  scheduled for %s ET" % (pid, when.strftime("%a %b %d, %H:%M")))
             done += 1
         except (meta_api.MetaError, RuntimeError) as exc:

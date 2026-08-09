@@ -8,10 +8,11 @@
       "fb_post_id": "122240861366275432",
       "fb_error": null,
       "fb_updated_at": "2026-08-06T16:01:03-04:00",
-      "ig_status": "missed",
-      "ig_media_id": null,
-      "ig_error": "more than 12 hours late",
-      "ig_updated_at": "2026-08-08T20:23:05-04:00"
+      "ig_status": "posted",
+      "ig_media_id": "17965953945135490",
+      "ig_error": null,
+      "ig_updated_at": "2026-08-08T20:06:40-04:00",
+      "fb_photo_id": null
     },
     "02": {
       "image_file": "02-mon-aug-10.jpg",
@@ -24,7 +25,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "03": {
       "image_file": "03-tue-aug-11.jpg",
@@ -37,7 +39,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "04": {
       "image_file": "04-wed-aug-12.jpg",
@@ -50,7 +53,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "05": {
       "image_file": "05-thu-aug-13.jpg",
@@ -63,7 +67,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "06": {
       "image_file": "06-fri-aug-14.jpg",
@@ -76,7 +81,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "07": {
       "image_file": "07-mon-aug-17.jpg",
@@ -89,7 +95,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "08": {
       "image_file": "08-tue-aug-18.jpg",
@@ -102,7 +109,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "09": {
       "image_file": "09-wed-aug-19.jpg",
@@ -115,7 +123,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "10": {
       "image_file": "10-thu-aug-20.jpg",
@@ -128,7 +137,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "11": {
       "image_file": "11-fri-aug-21.jpg",
@@ -141,7 +151,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "12": {
       "image_file": "12-mon-aug-24.jpg",
@@ -154,7 +165,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "13": {
       "image_file": "13-tue-aug-25.jpg",
@@ -167,7 +179,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "14": {
       "image_file": "14-wed-aug-26.jpg",
@@ -180,7 +193,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "15": {
       "image_file": "15-thu-aug-27.jpg",
@@ -193,7 +207,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "16": {
       "image_file": "16-fri-aug-28.jpg",
@@ -206,7 +221,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "17": {
       "image_file": "17-mon-aug-31.jpg",
@@ -219,7 +235,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "18": {
       "image_file": "18-tue-sep-01.jpg",
@@ -232,7 +249,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "19": {
       "image_file": "19-wed-sep-02.jpg",
@@ -245,7 +263,8 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     },
     "20": {
       "image_file": "20-thu-sep-03.jpg",
@@ -258,8 +277,9 @@
       "ig_status": "pending",
       "ig_media_id": null,
       "ig_error": null,
-      "ig_updated_at": null
+      "ig_updated_at": null,
+      "fb_photo_id": null
     }
   },
-  "updated_at": "2026-08-08T20:23:05-04:00"
+  "updated_at": "2026-08-09T09:38:26-04:00"
 }
