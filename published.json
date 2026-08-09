@@ -8,10 +8,10 @@
       "fb_post_id": "122240861366275432",
       "fb_error": null,
       "fb_updated_at": "2026-08-06T16:01:03-04:00",
-      "ig_status": "pending",
+      "ig_status": "missed",
       "ig_media_id": null,
-      "ig_error": null,
-      "ig_updated_at": null
+      "ig_error": "more than 12 hours late",
+      "ig_updated_at": "2026-08-08T20:23:05-04:00"
     },
     "02": {
       "image_file": "02-mon-aug-10.jpg",
@@ -261,5 +261,5 @@
       "ig_updated_at": null
     }
   },
-  "updated_at": "2026-08-06T17:16:48-04:00"
+  "updated_at": "2026-08-08T20:23:05-04:00"
 }
