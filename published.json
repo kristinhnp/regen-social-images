@@ -22,10 +22,10 @@
       "fb_post_id": null,
       "fb_error": null,
       "fb_updated_at": "2026-08-06T16:01:05-04:00",
-      "ig_status": "pending",
-      "ig_media_id": null,
+      "ig_status": "posted",
+      "ig_media_id": "18146013115539446",
       "ig_error": null,
-      "ig_updated_at": null,
+      "ig_updated_at": "2026-08-10T10:44:10-04:00",
       "fb_photo_id": null
     },
     "03": {
@@ -281,5 +281,5 @@
       "fb_photo_id": null
     }
   },
-  "updated_at": "2026-08-09T20:01:38-04:00"
+  "updated_at": "2026-08-10T10:44:10-04:00"
 }
