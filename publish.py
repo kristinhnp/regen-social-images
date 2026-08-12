@@ -73,7 +73,22 @@ def image_filename(post):
 # ----------------------------------------------------------------------
 
 def token_days_left(graph):
-    """Days until the token expires, or None if it does not expire."""
+    """
+    Days until this token stops working, or None if it never will.
+
+    There are two clocks on a Meta token and they are not the same one.
+
+    expires_at is when the token itself dies. On a Page token derived from
+    a long-lived User token that is 0, meaning never - which is true, and
+    which is also why reading only this field is a trap. It says "never
+    expires" and posting still stops dead.
+
+    data_access_expires_at is the one that actually bites. Meta closes the
+    data-access window 90 days after the token was minted, and when it
+    closes, publishing fails, whatever expires_at says.
+
+    So: take whichever comes first, and ignore the zeroes.
+    """
     app_id = config.get("META_APP_ID")
     app_secret = config.get("META_APP_SECRET")
     if not (app_id and app_secret):
@@ -86,21 +101,29 @@ def token_days_left(graph):
         )
     except meta_api.MetaError:
         return "unknown"
-    expires = (result.get("data") or {}).get("expires_at", 0)
-    if not expires:
+
+    info = result.get("data") or {}
+    deadlines = [info.get("expires_at") or 0,
+                 info.get("data_access_expires_at") or 0]
+    deadlines = [when for when in deadlines if when]
+    if not deadlines:
         return None
-    left = datetime.datetime.fromtimestamp(expires, tz=config.TZ) - config.now()
-    return max(0, left.days)
+
+    soonest = datetime.datetime.fromtimestamp(min(deadlines), tz=config.TZ)
+    return max(0, (soonest - config.now()).days)
 
 
 def warn_if_token_expiring(graph):
     days = token_days_left(graph)
     if days is None or days == "unknown":
         return
-    if days < 10:
-        print("\n  ! Your access token expires in %d day%s."
-              % (days, "" if days == 1 else "s"))
-        print("    Run .venv/bin/python check_token.py for how to renew it.\n")
+    if days < 14:
+        print("\n  ! Your Meta access runs out in %d day%s. Posting stops "
+              "when it does." % (days, "" if days == 1 else "s"))
+        print("    Run .venv/bin/python check_token.py for how to renew it.")
+        print("    Then update the FB_PAGE_TOKEN secret on GitHub, or the "
+              "renewal fixes\n    only this Mac and the scheduled job keeps "
+              "failing.\n")
 
 
 # ----------------------------------------------------------------------
