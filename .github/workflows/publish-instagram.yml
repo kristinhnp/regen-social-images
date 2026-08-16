@@ -1,18 +1,32 @@
-# Publishes any post whose time has arrived, to Facebook AND Instagram.
+# Publishes any Instagram post whose time has arrived.
 #
-# Both platforms are handled here now. Facebook used to be left out on the
-# grounds that Meta will hold a scheduled post for you - which is true, but
-# it only accepts posts up to 30 days ahead, so it needed a command run by
-# hand every month. That command never got run, which is why Facebook sat
-# silent while Instagram posted daily. Doing both here needs no command at
-# all, and the two feeds stay in step to the minute.
+# Facebook is NOT published here. It used to be, and it worked - the posts
+# went up correctly, as ordinary feed posts. The problem was that almost
+# nobody saw them. Measured over four days in August 2026:
+#
+#     Aug 14   Facebook reach 1     Instagram reach 19
+#     Aug 13   Facebook reach 2
+#     Aug 11   Facebook reach 0-1   Instagram reach 24
+#     the same Page, posted by hand, same week: reach 15
+#
+# Instagram is fine. Facebook throttles posts published by an app that is
+# still Unpublished / in Development mode, and getting the app published
+# needs Meta business verification AND App Review - weeks of work, and
+# reviewers routinely reject private tools because there is no public
+# sign-up flow to demonstrate.
+#
+# So Facebook now goes through Buffer, which publishes via its own
+# Meta-reviewed app and gets normal reach. buffer_csv.py builds the import
+# file. publish_facebook.py is deliberately left in the repository: if that
+# ever changes, re-adding its line below is the whole fix, and it checks
+# the Page for a matching caption before posting, so it cannot double up.
 #
 # Times below are UTC, because GitHub cron is always UTC and does not
 # follow daylight saving. The window is deliberately wide enough to cover
 # 08:00 New York in both summer and winter, and to absorb the delay
 # GitHub sometimes adds to scheduled runs.
 
-name: Publish due posts (Facebook + Instagram)
+name: Publish due Instagram posts
 
 on:
   schedule:
@@ -58,21 +72,10 @@ jobs:
           META_APP_ID: ${{ secrets.META_APP_ID }}
           META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
         run: |
-          # Instagram first: it is the fussier of the two, because it hands
-          # Meta a URL and waits for Meta to fetch and prepare the image.
-          #
-          # The two are deliberately kept independent. A failure on one must
-          # not stop the other, or a bad day on Instagram would silently
-          # take Facebook down with it - which is the shape of the bug this
-          # whole change is fixing. So each records its own exit code and
-          # the step fails at the end if either did.
-          set +e
-          python publish.py --instagram-due --live ; ig=$?
-          echo ""
-          python publish_facebook.py --live       ; fb=$?
-          echo ""
-          echo "Instagram exit $ig, Facebook exit $fb"
-          [ "$ig" -eq 0 ] && [ "$fb" -eq 0 ]
+          python publish.py --instagram-due --live
+          # Facebook goes through Buffer instead - see the note at the top
+          # of this file. To bring it back, add:
+          #     python publish_facebook.py --live
 
       - name: Save the record back
         # Runs even if a post failed, so a partial success is never lost.
