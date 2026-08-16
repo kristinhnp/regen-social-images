@@ -1,32 +1,39 @@
-# Publishes any Instagram post whose time has arrived.
+# Publishes any post whose time has arrived, to Facebook AND Instagram.
 #
-# Facebook is NOT published here. It used to be, and it worked - the posts
-# went up correctly, as ordinary feed posts. The problem was that almost
-# nobody saw them. Measured over four days in August 2026:
+# A short history, because it explains the shape of this file.
+#
+# Facebook was silent for its first week: the job only ran the Instagram
+# command, and Facebook's route depended on a monthly command run by hand
+# that never got run. That was fixed by adding publish_facebook.py here.
+#
+# Then Facebook posts went up correctly but almost nobody saw them.
+# Measured over four days in August 2026:
 #
 #     Aug 14   Facebook reach 1     Instagram reach 19
 #     Aug 13   Facebook reach 2
-#     Aug 11   Facebook reach 0-1   Instagram reach 24
-#     the same Page, posted by hand, same week: reach 15
+#     Aug 12   Facebook reach 2     Instagram reach 19
+#     Aug 11   Facebook reach 1     Instagram reach 24
+#     the same Page, posted by hand that month: reach 9, 11, 17, 25
 #
-# Instagram is fine. Facebook throttles posts published by an app that is
-# still Unpublished / in Development mode, and getting the app published
-# needs Meta business verification AND App Review - weeks of work, and
-# reviewers routinely reject private tools because there is no public
-# sign-up flow to demonstrate.
+# Ten times the audience, and the only difference was who published it.
+# The cause was the Meta app still being Unpublished (Development mode),
+# which throttles distribution of anything the app posts.
 #
-# So Facebook now goes through Buffer, which publishes via its own
-# Meta-reviewed app and gets normal reach. buffer_csv.py builds the import
-# file. publish_facebook.py is deliberately left in the repository: if that
-# ever changes, re-adding its line below is the whole fix, and it checks
-# the Page for a matching caption before posting, so it cannot double up.
+# The app was published on 16 August 2026, once business verification
+# cleared. App Review turned out not to be required to publish - only
+# business verification was. Facebook is back on below.
+#
+# If reach on the Facebook posts does not recover to roughly what a
+# hand-written post on the same Page gets, the app mode was not the whole
+# story, and buffer_csv.py is the fallback: it builds a Buffer import file,
+# and Buffer publishes through its own Meta-reviewed app.
 #
 # Times below are UTC, because GitHub cron is always UTC and does not
 # follow daylight saving. The window is deliberately wide enough to cover
 # 08:00 New York in both summer and winter, and to absorb the delay
 # GitHub sometimes adds to scheduled runs.
 
-name: Publish due Instagram posts
+name: Publish due posts (Facebook + Instagram)
 
 on:
   schedule:
@@ -72,10 +79,21 @@ jobs:
           META_APP_ID: ${{ secrets.META_APP_ID }}
           META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
         run: |
-          python publish.py --instagram-due --live
-          # Facebook goes through Buffer instead - see the note at the top
-          # of this file. To bring it back, add:
-          #     python publish_facebook.py --live
+          # Instagram first: it is the fussier of the two, because it hands
+          # Meta a URL and waits for Meta to fetch and prepare the image.
+          #
+          # The two are deliberately kept independent. A failure on one must
+          # not stop the other, or a bad day on Instagram would silently
+          # take Facebook down with it - which is the shape of the very
+          # first bug here. So each records its own exit code and the step
+          # fails at the end if either did.
+          set +e
+          python publish.py --instagram-due --live ; ig=$?
+          echo ""
+          python publish_facebook.py --live       ; fb=$?
+          echo ""
+          echo "Instagram exit $ig, Facebook exit $fb"
+          [ "$ig" -eq 0 ] && [ "$fb" -eq 0 ]
 
       - name: Save the record back
         # Runs even if a post failed, so a partial success is never lost.
