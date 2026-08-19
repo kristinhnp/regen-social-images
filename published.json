@@ -116,15 +116,15 @@
       "image_file": "09-wed-aug-19.jpg",
       "image_url": "https://raw.githubusercontent.com/kristinhnp/regen-social-images/main/images/09-wed-aug-19.jpg",
       "scheduled_for": "2026-08-19T08:00:00-04:00",
-      "fb_status": "pending",
-      "fb_post_id": null,
+      "fb_status": "posted",
+      "fb_post_id": "298419600015817_122242339580275432",
       "fb_error": null,
-      "fb_updated_at": "2026-08-06T16:01:21-04:00",
-      "ig_status": "pending",
-      "ig_media_id": null,
+      "fb_updated_at": "2026-08-19T10:08:34-04:00",
+      "ig_status": "posted",
+      "ig_media_id": "18116941852914825",
       "ig_error": null,
-      "ig_updated_at": null,
-      "fb_photo_id": null
+      "ig_updated_at": "2026-08-19T10:08:27-04:00",
+      "fb_photo_id": "122242339544275432"
     },
     "10": {
       "image_file": "10-thu-aug-20.jpg",
@@ -281,5 +281,5 @@
       "fb_photo_id": null
     }
   },
-  "updated_at": "2026-08-19T07:58:46-04:00"
+  "updated_at": "2026-08-19T10:08:34-04:00"
 }
