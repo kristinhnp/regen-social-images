@@ -270,16 +270,16 @@
       "image_file": "20-thu-sep-03.jpg",
       "image_url": "https://raw.githubusercontent.com/kristinhnp/regen-social-images/main/images/20-thu-sep-03.jpg",
       "scheduled_for": "2026-09-03T08:00:00-04:00",
-      "fb_status": "pending",
-      "fb_post_id": null,
+      "fb_status": "posted",
+      "fb_post_id": "298419600015817_122243982080275432",
       "fb_error": null,
-      "fb_updated_at": "2026-08-06T16:01:43-04:00",
-      "ig_status": "pending",
-      "ig_media_id": null,
+      "fb_updated_at": "2026-09-03T08:27:22-04:00",
+      "ig_status": "posted",
+      "ig_media_id": "18215796976342398",
       "ig_error": null,
-      "ig_updated_at": null,
-      "fb_photo_id": null
+      "ig_updated_at": "2026-09-03T08:27:15-04:00",
+      "fb_photo_id": "122243982044275432"
     }
   },
-  "updated_at": "2026-09-03T07:58:05-04:00"
+  "updated_at": "2026-09-03T08:27:22-04:00"
 }
