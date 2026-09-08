@@ -28,6 +28,7 @@ Nothing here knows your password. Authorisation is the Page token in .env
 import argparse
 import datetime
 import json
+import re
 import sys
 
 import config
@@ -39,6 +40,18 @@ import state
 # fired late, so a job that was off for a week does not empty a backlog
 # onto the Page all at once.
 DEFAULT_MAX_LATE_HOURS = 12
+
+# Instagram allows no links in a caption, so the captions say "link in bio".
+# Facebook does allow them, and "link in bio" means nothing there: across the
+# first eighteen posts that line produced zero clicks. So on Facebook the
+# line becomes the actual booking address.
+BOOKING_URL = "https://regenholistics.com/book"
+_LINK_IN_BIO = re.compile(r"[.,]?\s*Link in bio\.?", re.IGNORECASE)
+
+
+def facebook_caption(caption):
+    """The Instagram caption, with the real link in place of 'link in bio'."""
+    return _LINK_IN_BIO.sub(": " + BOOKING_URL, caption)
 
 
 def due_now(posts, data, live, max_late_hours, force_late):
@@ -167,7 +180,7 @@ def run(live, max_late_hours, force_late):
 
         for post, entry, when in due:
             pid = post["id"]
-            caption = publish.full_caption(post)
+            caption = facebook_caption(publish.full_caption(post))
 
             if not entry.get("image_url"):
                 message = "no public image address. Run deploy.py --live first."

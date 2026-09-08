@@ -1,123 +1,569 @@
 [
   {
-    "id": "01", "date": "2026-08-07", "template": "statement",
+    "id": "01",
+    "date": "2026-08-07",
+    "template": "statement",
     "headline": "Your labs came back normal.",
     "script": "So why do you still feel awful?",
     "caption": "Normal and optimal are not the same thing.\n\nIf you've been handed a clean lab report while you're still exhausted, bloated, and foggy, you were never given the real answer. You were given a range.\n\nI look for the reason underneath the symptom.\n\nFree 15-minute consult. Link in bio.",
     "hashtags": "#functionalmedicine #guthealth #rootcause #telehealth #newyorkhealth #floridahealth"
   },
   {
-    "id": "02", "date": "2026-08-10", "template": "sequence",
+    "id": "02",
+    "date": "2026-08-10",
+    "template": "sequence",
     "headline": "There's an order to this.",
     "script": "Gut. Liver. Cells.",
     "caption": "Most people start with a supplement and hope.\n\nThe body doesn't work that way. Repair the gut first. Then support the liver. Then the cells have what they need to actually do their job.\n\nThat sequence is the whole basis of the Root Cause Reset Method.\n\nBook a consult and I'll walk you through it."
   },
   {
-    "id": "03", "date": "2026-08-11", "template": "statement",
+    "id": "03",
+    "date": "2026-08-11",
+    "template": "statement",
     "headline": "It's not just your age.",
     "script": "and it's not in your head",
     "caption": "Forty is not a diagnosis.\n\nWaking up tired, gaining weight without changing anything, snapping at people you love. Those are signals, not a stage of life you have to accept.\n\nLet's find out what's driving them.\n\nFree discovery call, link in bio."
   },
   {
-    "id": "04", "date": "2026-08-12", "template": "list",
+    "id": "04",
+    "date": "2026-08-12",
+    "template": "list",
     "headline": "How I work",
-    "items": ["Telehealth across New York and Florida", "No insurance runaround", "Real appointment time, not seven minutes", "Free discovery call before you commit"],
+    "items": [
+      "Telehealth across New York and Florida",
+      "No insurance runaround",
+      "Real appointment time, not seven minutes",
+      "Free discovery call before you commit"
+    ],
     "caption": "You don't have to sit in a waiting room to get real care.\n\nEverything I do is virtual, and the first conversation costs you nothing.\n\nBook it at regenholistics.com."
   },
   {
-    "id": "05", "date": "2026-08-13", "template": "quote",
+    "id": "05",
+    "date": "2026-08-13",
+    "template": "quote",
     "headline": "Your body is designed to heal.",
     "script": "Let's help it do just that.",
     "caption": "I keep enrollment small on purpose. Every patient in the Root Cause Reset Method gets one-on-one follow-ups with me, and that only works with limited spots.\n\nA few are open for this round.\n\nComment RESET or book your free consult through the link."
   },
   {
-    "id": "06", "date": "2026-08-14", "template": "statement",
+    "id": "06",
+    "date": "2026-08-14",
+    "template": "statement",
     "headline": "Bloated by 3pm every day?",
     "script": "that's not normal digestion",
     "caption": "Feeling fine in the morning and looking three months pregnant by afternoon is your gut telling you something.\n\nMost people treat it with a probiotic off the shelf and wonder why nothing changes. The gut is the starting point, but only if you address it in the right order.\n\nBook a free consult and let's talk about what's actually going on."
   },
   {
-    "id": "07", "date": "2026-08-17", "template": "list",
+    "id": "07",
+    "date": "2026-08-17",
+    "template": "list",
     "headline": "What patients get",
-    "items": ["A 16-week guided program", "One-on-one follow-ups with me every month", "A food guide that's actually easy to follow", "A supplement plan built for the sequence", "Support when the hard weeks show up"],
+    "items": [
+      "A 16-week guided program",
+      "One-on-one follow-ups with me every month",
+      "A food guide that's actually easy to follow",
+      "A supplement plan built for the sequence",
+      "Support when the hard weeks show up"
+    ],
     "caption": "The Root Cause Reset Method isn't a PDF you download and never open.\n\nIt's sixteen weeks with me.\n\nSpots are limited. Book a free discovery call to see if it's a fit."
   },
   {
-    "id": "08", "date": "2026-08-18", "template": "statement",
+    "id": "08",
+    "date": "2026-08-18",
+    "template": "statement",
     "headline": "Doing everything right and the scale won't move.",
     "script": "you're not lazy",
     "caption": "Eating clean, walking daily, and still stuck.\n\nWhen the body is inflamed and the liver is overloaded, weight loss resistance is the symptom, not the problem. Cutting calories harder won't fix it.\n\nAddress the foundation and the rest gets easier.\n\nFree consult, link in bio."
   },
   {
-    "id": "09", "date": "2026-08-19", "template": "list",
+    "id": "09",
+    "date": "2026-08-19",
+    "template": "list",
     "headline": "Free, and starts today",
-    "items": ["Ten minutes of morning sunlight", "Half your body weight in ounces of water", "In bed by ten", "A short walk after dinner"],
+    "items": [
+      "Ten minutes of morning sunlight",
+      "Half your body weight in ounces of water",
+      "In bed by ten",
+      "A short walk after dinner"
+    ],
     "caption": "None of this replaces real care. But if you want somewhere to start while you think about it, start here.\n\nWhen you're ready to go deeper, the consult is free.\n\nregenholistics.com"
   },
   {
-    "id": "10", "date": "2026-08-20", "template": "quote",
+    "id": "10",
+    "date": "2026-08-20",
+    "template": "quote",
     "headline": "I don't mask symptoms.",
     "script": "I look for the why.",
     "caption": "Masking works until it doesn't.\n\nIf you're tired of managing the same symptoms year after year, let's have a different conversation.\n\nBook your free discovery call. Link in bio."
   },
   {
-    "id": "11", "date": "2026-08-21", "template": "statement",
+    "id": "11",
+    "date": "2026-08-21",
+    "template": "statement",
     "headline": "Walked into a room and forgot why.",
     "script": "brain fog is a symptom",
     "caption": "Losing words mid-sentence. Rereading the same paragraph. Feeling like you're running at half speed.\n\nThat's your cells telling you they're not getting what they need. It's rarely the brain's fault.\n\nLet's find the cause.\n\nFree consult, link in bio."
   },
   {
-    "id": "12", "date": "2026-08-24", "template": "sequence",
+    "id": "12",
+    "date": "2026-08-24",
+    "template": "sequence",
     "headline": "Sixteen weeks. Two phases.",
     "script": "one step at a time",
     "caption": "People ask why it takes sixteen weeks.\n\nBecause your body didn't get here in two. Real repair happens in a sequence, and skipping steps is why most programs stop working the moment they end.\n\nEnrollment is limited so I can stay hands-on with every patient.\n\nBook a free consult to hear the full plan."
   },
   {
-    "id": "13", "date": "2026-08-25", "template": "statement",
+    "id": "13",
+    "date": "2026-08-25",
+    "template": "statement",
     "headline": "Hormones don't go haywire for no reason.",
     "script": "something upstream is off",
     "caption": "Your liver clears the hormones your body is finished with. When it's backed up, they recirculate, and you feel every bit of it.\n\nThat's why I don't start with hormones. I start with the foundation.\n\nBook a consult and I'll explain how it fits together."
   },
   {
-    "id": "14", "date": "2026-08-26", "template": "list",
+    "id": "14",
+    "date": "2026-08-26",
+    "template": "list",
     "headline": "This might be you",
-    "items": ["Digestive issues that never fully resolve", "Fatigue that sleep doesn't fix", "An autoimmune condition and still feeling awful", "Weight that won't budge", "Told everything looks fine"],
+    "items": [
+      "Digestive issues that never fully resolve",
+      "Fatigue that sleep doesn't fix",
+      "An autoimmune condition and still feeling awful",
+      "Weight that won't budge",
+      "Told everything looks fine"
+    ],
     "caption": "If you read that list and nodded, we should talk.\n\nThe first conversation is free and there's no pressure attached to it.\n\nregenholistics.com"
   },
   {
-    "id": "15", "date": "2026-08-27", "template": "quote",
+    "id": "15",
+    "date": "2026-08-27",
+    "template": "quote",
     "headline": "Bring a friend, both of you save 25%.",
     "script": "through August 31",
     "caption": "Everything is easier with someone doing it alongside you.\n\nRefer a friend and you both take 25% off. Offer ends August 31.\n\nComment RESET or book your consult through the link."
   },
   {
-    "id": "16", "date": "2026-08-28", "template": "statement",
+    "id": "16",
+    "date": "2026-08-28",
+    "template": "statement",
     "headline": "Inflammation isn't a buzzword.",
     "script": "it's the common thread",
     "caption": "Joint pain, skin flares, stubborn weight, mood swings, poor sleep. Different symptoms, often one driver underneath.\n\nCalm the source and the list gets shorter.\n\nFree discovery call. Link in bio."
   },
   {
-    "id": "17", "date": "2026-08-31", "template": "statement",
+    "id": "17",
+    "date": "2026-08-31",
+    "template": "statement",
     "headline": "A cabinet full of supplements isn't a plan.",
     "script": "sequence matters more than quantity",
     "caption": "I meet people spending hundreds a month on bottles that fight each other.\n\nThe right supplement at the wrong time in the wrong order does very little. Timing and sequence are most of the work.\n\nBook a consult and let's simplify it."
   },
   {
-    "id": "18", "date": "2026-09-01", "template": "list",
+    "id": "18",
+    "date": "2026-09-01",
+    "template": "list",
     "headline": "Sleep is not optional",
-    "items": ["Same wake time, even on weekends", "Screens off 30 minutes before bed", "Dark, cool room", "Aim for seven to nine hours"],
+    "items": [
+      "Same wake time, even on weekends",
+      "Screens off 30 minutes before bed",
+      "Dark, cool room",
+      "Aim for seven to nine hours"
+    ],
     "caption": "Sleep is when repair actually happens. You can eat perfectly and still stall out without it.\n\nIt's one of the first things we work on together.\n\nFree consult at regenholistics.com."
   },
   {
-    "id": "19", "date": "2026-09-02", "template": "quote",
+    "id": "19",
+    "date": "2026-09-02",
+    "template": "quote",
     "headline": "Healing isn't a straight line.",
     "script": "consistency is what changes things",
     "caption": "Some weeks feel effortless. Some don't. That's normal, and it's exactly why you shouldn't do this alone.\n\nYou get me for sixteen weeks.\n\nBook your free discovery call. Link in bio."
   },
   {
-    "id": "20", "date": "2026-09-03", "template": "statement",
+    "id": "20",
+    "date": "2026-09-03",
+    "template": "statement",
     "headline": "Next round is filling.",
     "script": "a few spots left",
     "caption": "I cap enrollment in the Root Cause Reset Method so every patient gets real one-on-one time.\n\nIf you've been sitting on this, now is the moment.\n\nComment RESET or book your free consult through the link."
+  },
+  {
+    "id": "21",
+    "date": "2026-09-09",
+    "template": "bold",
+    "look": "bold",
+    "cta": "comment",
+    "eyebrow": "Gut health",
+    "headline": "Which one is you?",
+    "items": [
+      "Bloated after every meal",
+      "Foggy and tired by 2pm",
+      "Both, most days"
+    ],
+    "footer": "Drop the number",
+    "caption": "Most of my patients walk in with number three.\n\nThey've been told it's stress, or age, or just how their body is. It usually isn't. Bloating and afternoon fog tend to share a cause, and it starts in the gut.\n\nDrop the number in the comments. I read every one.",
+    "hashtags": "#functionalmedicine #guthealth #bloating #brainfog #rootcause"
+  },
+  {
+    "id": "22",
+    "date": "2026-09-10",
+    "template": "photo",
+    "look": "photo",
+    "cta": "book",
+    "headline": "Tired at 7am. Wired at 11pm.",
+    "script": "a rhythm problem, not a willpower problem",
+    "footer": "Book your free consult",
+    "caption": "Dragging yourself out of bed, then wide awake the moment you finally lie down.\n\nThat pattern is your stress hormones running backwards. Coffee in the morning and scrolling at night keep it that way, but they didn't start it.\n\nIf that's your week, let's look at why. Book your free consult. Link in bio.",
+    "hashtags": "#functionalmedicine #sleep #cortisol #rootcause #telehealth",
+    "photo": "life-meadow-rest",
+    "photo_position": "50% 45%",
+    "eyebrow": "Sleep"
+  },
+  {
+    "id": "23",
+    "date": "2026-09-11",
+    "template": "list",
+    "look": "classic",
+    "cta": "save",
+    "headline": "Five signs it starts in the gut",
+    "items": [
+      "Bloating after meals",
+      "Skin that flares for no reason",
+      "Brain fog in the afternoon",
+      "Cravings you can't out-think",
+      "Catching everything going around"
+    ],
+    "footer": "Save this post",
+    "caption": "None of these look like a gut problem. All of them can be one.\n\nMost of your immune system and a good share of your hormone signalling run through the gut. When it's irritated, the symptoms show up everywhere except the gut.\n\nSave this for the next time someone tells you it's just stress.",
+    "hashtags": "#guthealth #functionalmedicine #rootcause #inflammation #telehealth"
+  },
+  {
+    "id": "24",
+    "date": "2026-09-14",
+    "template": "bold",
+    "look": "bold",
+    "cta": "comment",
+    "headline": "Cold hands. Thinning hair. Always tired.",
+    "script": "your thyroid may have something to say",
+    "footer": "Comment below",
+    "caption": "Three complaints I hear together constantly, usually from someone whose thyroid test came back \"normal.\"\n\nA single TSH number misses a lot. It doesn't show whether the hormone is being converted, or whether something upstream is slowing the whole system down.\n\nComment YES if that sounds familiar.",
+    "hashtags": "#thyroidhealth #functionalmedicine #fatigue #hairloss #rootcause",
+    "eyebrow": "Thyroid"
+  },
+  {
+    "id": "25",
+    "date": "2026-09-15",
+    "template": "photo",
+    "look": "photo",
+    "cta": "comment",
+    "eyebrow": "Root Cause Reset Method",
+    "headline": "You don't have to keep living like this.",
+    "script": "sixteen weeks, one step at a time",
+    "footer": "Comment RESET",
+    "caption": "The Root Cause Reset Method is sixteen weeks with me, in a sequence: repair the gut, support the liver, then give your cells what they need to do their job.\n\nOne-on-one follow-ups every month. A food guide and a supplement guide you can actually follow. No guessing.\n\nComment RESET and I'll message you whether it's a fit.",
+    "hashtags": "#rootcausereset #functionalmedicine #telehealth #guthealth #newyorkhealth",
+    "photo": "life-hero-field-portrait",
+    "photo_position": "50% 45%"
+  },
+  {
+    "id": "26",
+    "date": "2026-09-16",
+    "template": "list",
+    "numbered": true,
+    "look": "classic",
+    "cta": "comment",
+    "headline": "Which one hits closest?",
+    "items": [
+      "Wide awake at 3am",
+      "Crashing at 3pm",
+      "Neither, I just never feel rested"
+    ],
+    "footer": "Drop the number",
+    "caption": "Three different complaints, and I look in the same places for all of them: blood sugar, stress hormones, and whether your body is getting the minerals it needs to actually rest.\n\nDrop the number in the comments.",
+    "hashtags": "#sleep #functionalmedicine #fatigue #rootcause #telehealth"
+  },
+  {
+    "id": "27",
+    "date": "2026-09-17",
+    "template": "photo",
+    "look": "photo",
+    "cta": "comment",
+    "eyebrow": "Mood",
+    "headline": "Snapping at people you love?",
+    "script": "irritability is a symptom too",
+    "footer": "Comment below",
+    "caption": "You're not a bad person. You're running on a blood sugar rollercoaster, short sleep, and hormones that nobody has looked at properly.\n\nWhen the body is under strain, patience is one of the first things to go. Fix the strain and the fuse gets longer.\n\nComment YES if you've been there this week.",
+    "hashtags": "#functionalmedicine #hormonehealth #bloodsugar #rootcause #telehealth",
+    "photo": "life-hero-laughing",
+    "photo_position": "50% 22%"
+  },
+  {
+    "id": "28",
+    "date": "2026-09-18",
+    "template": "list",
+    "look": "classic",
+    "cta": "save",
+    "headline": "Before your next lab appointment",
+    "items": [
+      "Ask for the full thyroid panel, not just TSH",
+      "Ask for fasting insulin, not just glucose",
+      "Ask for vitamin D, B12 and ferritin",
+      "Ask what optimal looks like, not just normal"
+    ],
+    "footer": "Save this post",
+    "caption": "A standard panel is built to rule out disease. It is not built to explain why you feel the way you do.\n\nThese four questions get you a much more useful set of results, and most doctors will run them if you ask.\n\nSave this for your next appointment.",
+    "hashtags": "#functionalmedicine #labwork #thyroidhealth #rootcause #telehealth"
+  },
+  {
+    "id": "29",
+    "date": "2026-09-21",
+    "template": "bold",
+    "look": "bold",
+    "cta": "comment",
+    "eyebrow": "Inflammation",
+    "headline": "Eating clean and still inflamed?",
+    "script": "food isn't the only input",
+    "footer": "Comment below",
+    "caption": "Sore joints, puffy face, a body that feels swollen no matter how well you eat.\n\nFood matters. So does a gut that's leaking, a liver that's overloaded, and sleep that never gets deep. Cleaning up your plate doesn't touch those.\n\nComment RESET and I'll message you whether the program is a fit.",
+    "hashtags": "#inflammation #functionalmedicine #guthealth #rootcause #telehealth"
+  },
+  {
+    "id": "30",
+    "date": "2026-09-22",
+    "template": "bold",
+    "look": "bold",
+    "cta": "comment",
+    "headline": "Still tired after a full night's sleep?",
+    "script": "let's talk about why",
+    "footer": "Comment below",
+    "caption": "Eight hours in bed and you wake up like you never went. That's not a sleep problem. That's a repair problem.\n\nDeep sleep is when the body does its maintenance, and a gut or liver under strain keeps pulling it out of that state.\n\nComment YES if you wake up tired.",
+    "hashtags": "#fatigue #functionalmedicine #telehealth #rootcause #floridahealth",
+    "eyebrow": "Energy"
+  },
+  {
+    "id": "31",
+    "date": "2026-09-23",
+    "template": "photo",
+    "look": "photo",
+    "cta": "comment",
+    "eyebrow": "Hormones",
+    "headline": "Sound familiar?",
+    "items": [
+      "Gaining weight without changing anything",
+      "Hair coming out in the shower",
+      "Labs say fine, body says otherwise"
+    ],
+    "footer": "Drop the number",
+    "caption": "If you picked three, you're in the most common group I see.\n\n\"Normal\" labs and a body that clearly isn't. Usually the right things were never tested, or the results were read against a range built for people who are already sick.\n\nDrop the number in the comments.",
+    "hashtags": "#hormonehealth #functionalmedicine #weightloss #hairloss #rootcause",
+    "photo": "life-hormone-field",
+    "photo_position": "50% 38%"
+  },
+  {
+    "id": "32",
+    "date": "2026-09-24",
+    "template": "statement",
+    "look": "classic",
+    "cta": "comment",
+    "headline": "Your skin is not the problem.",
+    "script": "it's the messenger",
+    "footer": "Comment below",
+    "caption": "Breakouts at forty. Eczema that comes and goes with your stress level. Rashes nobody can explain.\n\nSkin is the last stop for a lot of what the gut and liver couldn't deal with. Treating it from the outside works until it doesn't.\n\nComment YES if your skin flares with stress or food.",
+    "hashtags": "#skinhealth #guthealth #functionalmedicine #rootcause #telehealth"
+  },
+  {
+    "id": "33",
+    "date": "2026-09-25",
+    "template": "bold",
+    "look": "bold",
+    "cta": "save",
+    "eyebrow": "Blood sugar",
+    "headline": "Craving sugar by 4pm?",
+    "items": [
+      "Breakfast was mostly carbs",
+      "Sleep was short",
+      "Stress is running the show",
+      "Blood sugar has been on a rollercoaster"
+    ],
+    "footer": "Save this post",
+    "caption": "The 4pm craving is not a character flaw. It's the end of a chain that started at breakfast.\n\nEvery one of these pushes blood sugar up and lets it crash, and the crash is what sends you to the pantry.\n\nSave this for 4pm tomorrow.",
+    "hashtags": "#bloodsugar #cravings #functionalmedicine #rootcause #telehealth"
+  },
+  {
+    "id": "34",
+    "date": "2026-09-28",
+    "template": "statement",
+    "look": "classic",
+    "cta": "comment",
+    "headline": "Bloated, or inflamed?",
+    "script": "they're not the same thing",
+    "footer": "Comment below",
+    "caption": "Bloating comes and goes with meals. Inflammation is the swollen, achy, puffy feeling that's there when you wake up.\n\nThey get treated the same way and they shouldn't be. One starts in the gut. The other has usually spread past it.\n\nComment BLOATED or INFLAMED and I'll tell you where I'd look first.",
+    "hashtags": "#bloating #inflammation #guthealth #functionalmedicine #rootcause"
+  },
+  {
+    "id": "35",
+    "date": "2026-09-29",
+    "template": "photo",
+    "look": "photo",
+    "cta": "book",
+    "eyebrow": "Root Cause Reset Method",
+    "headline": "Sixteen weeks with me.",
+    "script": "not a PDF, not a group chat",
+    "footer": "Book your free consult",
+    "caption": "The Root Cause Reset Method is one-on-one. You get me, every month, looking at your results and adjusting the plan.\n\nGut first, then liver, then the cells. In that order, because that's the order the body repairs in.\n\nEnrollment is capped so it stays personal. Book your free consult. Link in bio.",
+    "hashtags": "#rootcausereset #functionalmedicine #telehealth #guthealth #newyorkhealth",
+    "photo": "life-telehealth-consult",
+    "photo_position": "50% 50%"
+  },
+  {
+    "id": "36",
+    "date": "2026-09-30",
+    "template": "list",
+    "numbered": true,
+    "look": "classic",
+    "cta": "comment",
+    "headline": "Which one is your gut doing?",
+    "items": [
+      "Flat in the morning, bloated by dinner",
+      "Fine until one particular food",
+      "Never quite right, never quite wrong"
+    ],
+    "footer": "Drop the number",
+    "caption": "Three patterns, three different starting points.\n\nOne points at what and when you eat. Two points at a sensitivity. Three is the one people ignore for years, and it usually means the gut has been irritated for a long time.\n\nDrop the number in the comments.",
+    "hashtags": "#guthealth #bloating #functionalmedicine #rootcause #telehealth"
+  },
+  {
+    "id": "37",
+    "date": "2026-10-01",
+    "template": "bold",
+    "look": "bold",
+    "cta": "book",
+    "eyebrow": "Sleep",
+    "headline": "Wide awake at 3am?",
+    "script": "usually blood sugar and cortisol",
+    "footer": "Book your free consult",
+    "caption": "Falling asleep is fine. Staying asleep is the problem.\n\nA blood sugar dip in the small hours sends a stress signal, and the stress signal wakes you up. Dinner, alcohol, and the state of your liver all decide whether that happens.\n\nIf this is most nights, let's look at why. Book your free consult. Link in bio.",
+    "hashtags": "#sleep #cortisol #bloodsugar #functionalmedicine #rootcause"
+  },
+  {
+    "id": "38",
+    "date": "2026-10-02",
+    "template": "list",
+    "look": "classic",
+    "cta": "book",
+    "headline": "Normal is a range. Optimal is a target.",
+    "items": [
+      "Thyroid: TSH alone is not the full picture",
+      "Iron: ferritin matters, not just hemoglobin",
+      "Vitamin D: the low end of normal is still low",
+      "Blood sugar: fasting insulin, not just glucose"
+    ],
+    "footer": "Book your free consult",
+    "caption": "\"Everything came back normal\" is where a lot of people get stuck for years.\n\nNormal means you're inside a range drawn around a population that includes a lot of unwell people. Optimal is where you actually feel good. They are not the same number.\n\nWant yours read the second way? Book your free consult. Link in bio.",
+    "hashtags": "#labwork #functionalmedicine #thyroidhealth #rootcause #telehealth"
+  },
+  {
+    "id": "39",
+    "date": "2026-10-05",
+    "template": "photo",
+    "look": "photo",
+    "cta": "comment",
+    "eyebrow": "Energy",
+    "headline": "Running on empty by noon?",
+    "script": "and coffee stopped working",
+    "footer": "Comment below",
+    "caption": "When the second coffee does nothing, the problem isn't caffeine. It's that your cells aren't making energy properly in the first place.\n\nThat comes back to the gut absorbing nutrients, the liver clearing what it should, and the cells getting what they need. In that order.\n\nComment YES if noon is when your day falls apart.",
+    "hashtags": "#fatigue #functionalmedicine #cellularhealth #rootcause #telehealth",
+    "photo": "life-weight-walking",
+    "photo_position": "50% 30%"
+  },
+  {
+    "id": "40",
+    "date": "2026-10-06",
+    "template": "photo",
+    "look": "photo",
+    "cta": "comment",
+    "headline": "A few spots open this round.",
+    "script": "one-on-one, sixteen weeks",
+    "footer": "Comment RESET",
+    "caption": "I keep enrollment in the Root Cause Reset Method small so every patient gets real time with me.\n\nIf you've read these posts for a month and nodded along, this is the point where you do something about it.\n\nComment RESET and I'll message you whether this round is a fit.",
+    "hashtags": "#rootcausereset #functionalmedicine #telehealth #floridahealth #newyorkhealth",
+    "photo": "life-thyroid-mature",
+    "photo_position": "50% 22%",
+    "eyebrow": "Root Cause Reset Method"
+  },
+  {
+    "id": "41",
+    "date": "2026-10-07",
+    "template": "photo",
+    "look": "photo",
+    "cta": "comment",
+    "eyebrow": "Peptide therapy",
+    "photo": "life-peptide-active",
+    "photo_position": "50% 35%",
+    "headline": "Everyone's asking me about peptides.",
+    "script": "here's my honest answer",
+    "footer": "Comment PEPTIDE",
+    "caption": "Peptides are a newer, evolving area, and the online version is running well ahead of the evidence.\n\nWhat I tell patients who ask: they are never a starting point on their own. Sleep, food, gut, and labs come first, because nothing works well on a shaky foundation. After that it's an individual conversation about what the research does and doesn't show for you.\n\nComment PEPTIDE and I'll message you the honest version.",
+    "hashtags": "#peptidetherapy #functionalmedicine #rootcause #telehealth #newyorkhealth"
+  },
+  {
+    "id": "42",
+    "date": "2026-10-08",
+    "template": "bold",
+    "look": "bold",
+    "cta": "comment",
+    "eyebrow": "Gut health",
+    "headline": "Probiotics didn't fix it?",
+    "script": "they were never step one",
+    "footer": "Comment below",
+    "caption": "A probiotic on top of a gut that's irritated, undernourished, and still eating the thing that irritates it is a coin toss.\n\nOrder matters. Calm the irritation, feed the good bacteria you already have, then add more if you still need to. That's the difference between a supplement and a plan.\n\nComment YES if there's a half-used bottle in your cabinet.",
+    "hashtags": "#guthealth #probiotics #functionalmedicine #rootcause #telehealth"
+  },
+  {
+    "id": "43",
+    "date": "2026-10-09",
+    "template": "list",
+    "look": "classic",
+    "cta": "save",
+    "headline": "Before you try peptides",
+    "items": [
+      "Who is supervising it, and are they licensed",
+      "Where is the product actually coming from",
+      "What does the evidence say for your goal",
+      "What foundation is it sitting on"
+    ],
+    "footer": "Save this post",
+    "caption": "Four questions I'd want answered before anyone I love tried a peptide.\n\nThis is a fast-moving area with a lot of product nobody is checking and a lot of confident people selling it. Supervision, sourcing, evidence, foundation. In that order.\n\nSave this for the next time one shows up in your feed.",
+    "hashtags": "#peptidetherapy #functionalmedicine #rootcause #telehealth #floridahealth"
+  },
+  {
+    "id": "44",
+    "date": "2026-10-12",
+    "template": "photo",
+    "look": "photo",
+    "cta": "book",
+    "eyebrow": "Gut health",
+    "photo": "life-gut-vegetables",
+    "photo_position": "50% 45%",
+    "headline": "Bloated, gassy, and told it's IBS?",
+    "script": "IBS says what. It doesn't say why.",
+    "footer": "Book your free consult",
+    "caption": "IBS is a label for a set of symptoms. It is not an explanation of what's driving them.\n\nFood sensitivities, an imbalanced microbiome, stress running straight through the gut, a liver that's behind. Those are the things I actually look for, because those are the things that can change.\n\nIf you've been living with the label, let's look underneath it. Book your free consult. Link in bio.",
+    "hashtags": "#guthealth #ibs #bloating #functionalmedicine #rootcause"
+  },
+  {
+    "id": "45",
+    "date": "2026-10-13",
+    "template": "bold",
+    "look": "bold",
+    "cta": "comment",
+    "eyebrow": "Peptide therapy",
+    "headline": "Peptides won't fix a broken foundation.",
+    "script": "sleep, food, gut, then we talk",
+    "footer": "Comment below",
+    "caption": "I get asked whether peptides can replace the slow work. They can't.\n\nAnything supportive works better on a body that sleeps, digests, and clears what it should. That's the order I work in, and it's why the Root Cause Reset Method starts with the gut, not with the newest thing on your feed.\n\nComment YES if you've been tempted to skip to the shortcut.",
+    "hashtags": "#peptidetherapy #guthealth #functionalmedicine #rootcause #telehealth"
   }
 ]
