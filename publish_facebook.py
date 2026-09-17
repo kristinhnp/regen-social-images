@@ -153,6 +153,51 @@ def publish_one(graph, page_id, entry, caption, label):
     return post_id, media_id
 
 
+def publish_story(graph, page_id, story_url, label):
+    """
+    Put the story version on the Page.
+
+    Meta refuses to reuse a photo that already carried a post, so the
+    story gets its own fresh upload of the story-format picture, then
+    /photo_stories turns that upload into a story.
+    """
+    photo = graph.post(
+        "%s/photos" % page_id,
+        {"url": story_url, "published": "false"},
+        label="%s story upload" % label,
+    )
+    photo_id = photo.get("id")
+    if not photo_id:
+        raise RuntimeError("Facebook did not return a story photo id.")
+
+    result = graph.post(
+        "%s/photo_stories" % page_id,
+        {"photo_id": photo_id},
+        label="%s story" % label,
+    )
+    if not result.get("success", True) and not result.get("post_id"):
+        raise RuntimeError("Facebook did not confirm the story.")
+    return result.get("post_id") or photo_id
+
+
+def attempt_story(graph, page_id, data, pid, entry, live):
+    """A story failure is reported but never fails the post or the run."""
+    story_url = entry.get("story_image_url")
+    if not story_url or not publish.stories_enabled():
+        return
+    if not live:
+        print("        + would also publish its story")
+        return
+    try:
+        story_id = publish_story(graph, page_id, story_url, "FB %s" % pid)
+        state.mark(data, pid, "fb_story", "posted", post_id=story_id, error=None)
+        print("  + %s  story published to Facebook" % pid)
+    except (meta_api.MetaError, RuntimeError) as exc:
+        message = config.redact(str(exc)).splitlines()[0]
+        state.mark(data, pid, "fb_story", "failed", error=message)
+        print("  ! %s  story failed (the feed post is fine): %s" % (pid, message))
+
+
 def run(live, max_late_hours, force_late):
     page_id = config.require("PAGE_ID", "This is your Facebook Page's numeric id.")
     token = config.page_token()
@@ -165,7 +210,20 @@ def run(live, max_late_hours, force_late):
 
     try:
         due = due_now(posts, data, live, max_late_hours, force_late)
-        if not due:
+        # Stories that were already marked failed before this run began.
+        # They retry once per run while their post is fresh - and a run
+        # with nothing new due still performs these retries.
+        fresh = config.now() - datetime.timedelta(hours=max_late_hours)
+        story_retry_ids = {
+            p["id"] for p in posts
+            if state.entry(data, p["id"]).get("fb_story_status") == "failed"
+            and state.entry(data, p["id"]).get("fb_status") == "posted"
+            and state.entry(data, p["id"]).get("story_image_url")
+            and config.scheduled_dt(p["date"]) >= fresh
+        }
+
+        if not due and not (live and publish.stories_enabled()
+                            and story_retry_ids):
             print("Facebook: nothing due right now. (%s ET)"
                   % config.now().strftime("%b %d %H:%M"))
             return 0
@@ -195,6 +253,7 @@ def run(live, max_late_hours, force_late):
                       % (pid, when.strftime("%a %b %d, %H:%M")))
                 print("        image   %s" % entry["image_url"])
                 print("        caption %s" % caption.splitlines()[0][:66])
+                attempt_story(graph, page_id, data, pid, entry, live)
                 continue
 
             # Last check before sending: is it already on the Page? This
@@ -212,6 +271,7 @@ def run(live, max_late_hours, force_late):
                 state.mark(data, pid, "fb", "posted", post_id=post_id,
                            photo_id=media_id, error=None)
                 print("  + %s  published to Facebook" % pid)
+                attempt_story(graph, page_id, data, pid, entry, live)
                 done += 1
             except (meta_api.MetaError, RuntimeError) as exc:
                 message = config.redact(str(exc))
@@ -219,6 +279,18 @@ def run(live, max_late_hours, force_late):
                            error=message.splitlines()[0])
                 print("  ! %s  failed: %s" % (pid, message.splitlines()[0]))
                 failed += 1
+
+        # Stories that failed on an earlier run get another go while their
+        # post is fresh. Only failures snapshotted at the top of the run
+        # retry, so a story that just failed seconds ago waits for the next
+        # run, and posts from before stories existed are never touched.
+        if live and publish.stories_enabled():
+            for post in posts:
+                entry = state.entry(data, post["id"])
+                if post["id"] in story_retry_ids:
+                    print("  retrying story for %s ..." % post["id"])
+                    entry["fb_story_status"] = None
+                    attempt_story(graph, page_id, data, post["id"], entry, live)
 
         if live:
             print("\nFacebook: %d published, %d failed." % (done, failed))

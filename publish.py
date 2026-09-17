@@ -295,6 +295,27 @@ def already_on_instagram(graph, ig_id, caption, cache):
     return None
 
 
+def _wait_until_ready(graph, creation_id, label):
+    """Poll a media container until Meta reports it FINISHED."""
+    for _ in range(IG_POLL_ATTEMPTS):
+        status = graph.get(
+            creation_id, {"fields": "status_code,status"}, label="%s status" % label
+        )
+        code = status.get("status_code")
+        if code == "FINISHED":
+            return
+        if code in ("ERROR", "EXPIRED"):
+            raise RuntimeError(
+                "Instagram could not prepare the image (%s). %s"
+                % (code, status.get("status", ""))
+            )
+        time.sleep(IG_POLL_SECONDS)
+    raise RuntimeError(
+        "Instagram was still preparing the image after %d seconds."
+        % (IG_POLL_ATTEMPTS * IG_POLL_SECONDS)
+    )
+
+
 def publish_one_instagram(graph, ig_id, entry, caption, label):
     """Create a container, wait for Meta to prepare it, then publish."""
     container = graph.post(
@@ -306,24 +327,7 @@ def publish_one_instagram(graph, ig_id, entry, caption, label):
     if not creation_id:
         raise RuntimeError("Instagram did not return a container id.")
 
-    for _ in range(IG_POLL_ATTEMPTS):
-        status = graph.get(
-            creation_id, {"fields": "status_code,status"}, label="%s status" % label
-        )
-        code = status.get("status_code")
-        if code == "FINISHED":
-            break
-        if code in ("ERROR", "EXPIRED"):
-            raise RuntimeError(
-                "Instagram could not prepare the image (%s). %s"
-                % (code, status.get("status", ""))
-            )
-        time.sleep(IG_POLL_SECONDS)
-    else:
-        raise RuntimeError(
-            "Instagram was still preparing the image after %d seconds."
-            % (IG_POLL_ATTEMPTS * IG_POLL_SECONDS)
-        )
+    _wait_until_ready(graph, creation_id, label)
 
     published = graph.post(
         "%s/media_publish" % ig_id,
@@ -331,6 +335,62 @@ def publish_one_instagram(graph, ig_id, entry, caption, label):
         label="%s publish" % label,
     )
     return published.get("id")
+
+
+def stories_enabled():
+    return (config.get("STORIES_ENABLED", "yes") or "yes").lower() not in (
+        "no", "0", "false", "off")
+
+
+def publish_story_instagram(graph, ig_id, image_url, label):
+    """
+    Publish the story version of a post.
+
+    Same container dance as a feed post, with media_type=STORIES. Stories
+    carry no caption: the image is the whole message, which is why the
+    story renders bake the site address into the picture.
+    """
+    container = graph.post(
+        "%s/media" % ig_id,
+        {"image_url": image_url, "media_type": "STORIES"},
+        label="%s story container" % label,
+    )
+    creation_id = container.get("id")
+    if not creation_id:
+        raise RuntimeError("Instagram did not return a story container id.")
+
+    _wait_until_ready(graph, creation_id, label)
+
+    published = graph.post(
+        "%s/media_publish" % ig_id,
+        {"creation_id": creation_id},
+        label="%s story publish" % label,
+    )
+    return published.get("id")
+
+
+def attempt_story_instagram(graph, ig_id, data, pid, entry, live):
+    """
+    Put up the story for a post whose feed publish just succeeded.
+
+    Deliberately forgiving: a story is a bonus on top of the feed post, so
+    a story failure is recorded and reported but never fails the run or
+    the post itself.
+    """
+    story_url = entry.get("story_image_url")
+    if not story_url or not stories_enabled():
+        return
+    if not live:
+        print("        + would also publish its story")
+        return
+    try:
+        media_id = publish_story_instagram(graph, ig_id, story_url, "IG %s" % pid)
+        state.mark(data, pid, "ig_story", "posted", media_id=media_id, error=None)
+        print("  + %s  story published to Instagram" % pid)
+    except (meta_api.MetaError, RuntimeError) as exc:
+        message = config.redact(str(exc)).splitlines()[0]
+        state.mark(data, pid, "ig_story", "failed", error=message)
+        print("  ! %s  story failed (the feed post is fine): %s" % (pid, message))
 
 
 def do_instagram_due(posts, data, live, max_late_hours, force_late):
@@ -363,7 +423,19 @@ def do_instagram_due(posts, data, live, max_late_hours, force_late):
             continue
         due.append((post, entry, when))
 
-    if not due:
+    # Stories that were already marked failed before this run began. They
+    # retry once per run while their post is fresh - and a run with nothing
+    # new due still performs these retries.
+    fresh = now - datetime.timedelta(hours=max_late_hours)
+    story_retry_ids = {
+        p["id"] for p in posts
+        if state.entry(data, p["id"]).get("ig_story_status") == "failed"
+        and state.entry(data, p["id"]).get("ig_status") == "posted"
+        and state.entry(data, p["id"]).get("story_image_url")
+        and config.scheduled_dt(p["date"]) >= fresh
+    }
+
+    if not due and not (live and stories_enabled() and story_retry_ids):
         print("Nothing is due right now. (%s ET)" % now.strftime("%b %d %H:%M"))
         return 0
 
@@ -373,6 +445,8 @@ def do_instagram_due(posts, data, live, max_late_hours, force_late):
     # Filled in on first use, so the recent-media list is fetched at most
     # once per run rather than once per post.
     remote_cache = {"data": None}
+
+
 
     done = failed = 0
     for post, entry, when in due:
@@ -401,6 +475,7 @@ def do_instagram_due(posts, data, live, max_late_hours, force_late):
                   % (pid, when.strftime("%a %b %d, %H:%M")))
             print("        image   %s" % entry["image_url"])
             print("        caption %s" % caption.splitlines()[0][:66])
+            attempt_story_instagram(graph, ig_id, data, pid, entry, live)
             continue
 
         # Last check before sending: is it already on the account? This
@@ -417,12 +492,28 @@ def do_instagram_due(posts, data, live, max_late_hours, force_late):
             media_id = publish_one_instagram(graph, ig_id, entry, caption, "IG %s" % pid)
             state.mark(data, pid, "ig", "posted", media_id=media_id, error=None)
             print("  + %s  published to Instagram" % pid)
+            attempt_story_instagram(graph, ig_id, data, pid, entry, live)
             done += 1
         except (meta_api.MetaError, RuntimeError) as exc:
             message = config.redact(str(exc))
             state.mark(data, pid, "ig", "failed", error=message.splitlines()[0])
             print("  ! %s  failed: %s" % (pid, message.splitlines()[0]))
             failed += 1
+
+    # Stories that failed on an earlier run get another go while their post
+    # is still fresh. Only explicit failures retry: posts published before
+    # stories existed stay untouched, so nothing old floods the story tray.
+    if live and stories_enabled():
+        for post in posts:
+            entry = state.entry(data, post["id"])
+            if (post["id"] in story_retry_ids
+                    and entry.get("ig_status") == "posted"
+                    and entry.get("ig_story_status") == "failed"
+                    and entry.get("story_image_url")
+                    and config.scheduled_dt(post["date"]) >= fresh):
+                print("  retrying story for %s ..." % post["id"])
+                entry["ig_story_status"] = None
+                attempt_story_instagram(graph, ig_id, data, post["id"], entry, live)
 
     if live:
         print("\n%d published, %d failed." % (done, failed))

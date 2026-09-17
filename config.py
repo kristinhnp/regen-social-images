@@ -20,6 +20,8 @@ ENV_PATH = os.path.join(HERE, ".env")
 OUT = os.path.join(HERE, "output")
 OUT_IMAGES = os.path.join(OUT, "images")
 OUT_JPEG = os.path.join(OUT, "images-jpeg")
+OUT_STORIES = os.path.join(OUT, "stories")
+OUT_JPEG_STORIES = os.path.join(OUT, "stories-jpeg")
 STATE_PATH = os.path.join(HERE, "published.json")
 IMAGE_HOST_DIR = os.path.join(HERE, ".imagehost")
 
