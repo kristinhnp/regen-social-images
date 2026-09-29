@@ -578,15 +578,24 @@
       "image_file": "35-tue-sep-29.jpg",
       "image_url": "https://raw.githubusercontent.com/kristinhnp/regen-social-images/main/images/35-tue-sep-29.jpg",
       "scheduled_for": "2026-09-29T08:00:00-04:00",
-      "fb_status": "pending",
-      "fb_post_id": null,
+      "fb_status": "posted",
+      "fb_post_id": "298419600015817_122247630902275432",
       "fb_error": null,
-      "fb_updated_at": null,
-      "ig_status": "pending",
-      "ig_media_id": null,
+      "fb_updated_at": "2026-09-29T12:52:27-04:00",
+      "ig_status": "posted",
+      "ig_media_id": "17941404108362532",
       "ig_error": null,
-      "ig_updated_at": null,
-      "story_image_url": "https://raw.githubusercontent.com/kristinhnp/regen-social-images/main/images/stories/35-tue-sep-29.jpg"
+      "ig_updated_at": "2026-09-29T12:52:08-04:00",
+      "story_image_url": "https://raw.githubusercontent.com/kristinhnp/regen-social-images/main/images/stories/35-tue-sep-29.jpg",
+      "ig_story_status": "posted",
+      "ig_story_updated_at": "2026-09-29T12:52:21-04:00",
+      "ig_story_media_id": "18025689140913635",
+      "ig_story_error": null,
+      "fb_photo_id": "122247630866275432",
+      "fb_story_status": "posted",
+      "fb_story_updated_at": "2026-09-29T12:52:34-04:00",
+      "fb_story_post_id": "2893300081028987",
+      "fb_story_error": null
     },
     "36": {
       "image_file": "36-wed-sep-30.jpg",
@@ -729,5 +738,5 @@
       "story_image_url": "https://raw.githubusercontent.com/kristinhnp/regen-social-images/main/images/stories/45-tue-oct-13.jpg"
     }
   },
-  "updated_at": "2026-09-28T22:16:15-04:00"
+  "updated_at": "2026-09-29T12:52:34-04:00"
 }
